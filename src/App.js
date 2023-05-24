@@ -1,57 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+import Contact from "./Pages/Contact";
+import OurStore from "./Pages/OurStore";
+import Blog from "./Pages/Blog";
+import CompareProduct from "./Pages/CompareProduct";
+import Wishlist from "./Pages/Wishlist";
+import Login from "./Pages/Login";
+import Forgotpassword from "./Pages/Forgotpassword";
+import Signup from "./Pages/Signup";
+import Resetpassword from "./Pages/Resetpassword";
+import SingleBlog from "./Pages/SingleBlog";
+import SingleProduct from "./Pages/SingleProduct";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="product" element={<OurStore />} />
+            <Route path="product/:id" element={<SingleProduct />} />
+            <Route path="blogs" element={<Blog />} />
+            <Route path="blog/:id" element={<SingleBlog />} />
+            <Route path="compare-product" element={<CompareProduct />} />
+            <Route path="wishlist" element={<Wishlist />} />
+            <Route path="login" element={<Login />} />
+            <Route path="forgot-password" element={<Forgotpassword />} />
+            <Route path="signup" element={<Signup />} />
+            <Route path="reset-password" element={<Resetpassword />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
